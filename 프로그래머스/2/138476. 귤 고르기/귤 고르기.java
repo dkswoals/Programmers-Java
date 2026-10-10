@@ -6,16 +6,16 @@ class Solution {
         
         Map<Integer, Integer> map = new HashMap<>();
 
-        for (Integer data : tangerine) {
+        for (int data : tangerine) {
             map.merge(data, 1, Integer::sum);
         }
-
+        
         List<Map.Entry<Integer, Integer>> entries = new ArrayList<>(map.entrySet());
         entries.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
 
         do {
             answer++;
-            k -= map.get(entries.get(i++).getKey());
+            k -= entries.get(i++).getValue();
         } while (k != 0 && k >= 0);
 
         return answer;
